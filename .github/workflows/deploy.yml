@@ -24,6 +24,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Investigate Current Folder 1
+        uses: pwd
+
+      - name: Investigate Current Folder 2
+        uses: ls
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
