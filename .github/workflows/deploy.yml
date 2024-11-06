@@ -2,7 +2,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ["*"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -15,23 +15,27 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    steps:
 
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          path: './'
+          node-version: latest
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Install dependencies
+        run: |
+          cd 2rmjp-blog
+          npm install
+          npm run build
+
+      - name: Deploy to Github pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          USER_EMAIL: ${{ secrets.JP_EMAIL }}
+        run: |
+          cd 2rmjp-blog
+          npm run ng -- deploy --repo="https://github.com/2rmjp/2rmjp.github.io.git" --base-href=/2rmjp.github.io/ --name=2rmjp --email="${USER_EMAIL}"
