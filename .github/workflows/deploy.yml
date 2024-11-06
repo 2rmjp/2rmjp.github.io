@@ -43,7 +43,7 @@ jobs:
         run: ls
 
       - name: Investigate build Folder
-        run: ./app/dist/app
+        run: ls ./app/dist/app
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
