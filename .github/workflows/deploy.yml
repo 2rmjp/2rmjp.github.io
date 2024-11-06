@@ -30,6 +30,11 @@ jobs:
       - name: Investigate Current Folder 2
         run: ls
 
+      - name: Build Project
+        run: |
+          cd ./app
+          npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
