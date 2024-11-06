@@ -36,6 +36,12 @@ jobs:
           npm install
           npm run build
 
+      - name: Investigate Current Folder After Build 1
+        run: pwd
+
+      - name: Investigate Current Folder After Build 2
+        run: ls
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
