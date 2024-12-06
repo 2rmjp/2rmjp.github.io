@@ -1,0 +1,11 @@
+.content {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr; /* Default: one item per row */
+}
+  
+@media (min-width: 768px) {
+    .content {
+        grid-template-columns: repeat(3, 1fr); /* Three items per row on larger screens */
+    }
+}

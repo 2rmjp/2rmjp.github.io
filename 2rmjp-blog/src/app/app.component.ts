@@ -69,9 +69,4 @@ export class AppComponent {
       description: 'Entenda a importância de alinhar seus treinos com os objetivos de longevidade, em vez de apenas resultados imediatos.',
     }
   ];
-  paragraphs = [
-    'Paragraph 1: This is the first paragraph.',
-    'Paragraph 2: Here is some more text.',
-    'Paragraph 3: Angular makes this easy!'
-  ];
 }
